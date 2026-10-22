@@ -36,11 +36,19 @@ jobs:
       - name: Run Tests
         run: flutter test
 
+      - name: Install Linux Build Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+
       - name: Build Web
         run: flutter build web --release
 
       - name: Build Android APK
         run: flutter build apk --release
+
+      - name: Build Linux Desktop
+        run: flutter build linux --release
 
       - name: Upload Web Artifact
         uses: actions/upload-artifact@v4
@@ -53,3 +61,9 @@ jobs:
         with:
           name: focus-oasis-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Upload Linux Bundle Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: focus-oasis-linux-bundle
+          path: build/linux/x64/release/bundle

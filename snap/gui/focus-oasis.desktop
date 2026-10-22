@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Focus Oasis
+Name[ar]=واحة التركيز
+Comment=Smart Pomodoro timer with tree planting gamification and cloud sync
+Comment[ar]=تطبيق بومودورو ذكي مع تلعيب زراعة الأشجار ومزامنة سحابية
+Exec=focus-oasis
+Icon=${SNAP}/meta/gui/focus-oasis.png
+Terminal=false
+Type=Application
+Categories=Utility;Office;Clock;
+Keywords=pomodoro;timer;productivity;focus;oasis;trees;study;work;تركيز;بومودورو;مؤقت;
+StartupWMClass=focus_oasis

@@ -13,7 +13,9 @@
   <img src="https://img.shields.io/badge/Flutter-3.47+-02569B?logo=flutter&logoColor=white" alt="Flutter"/>
   <img src="https://img.shields.io/badge/Dart-3.13+-0175C2?logo=dart&logoColor=white" alt="Dart"/>
   <img src="https://img.shields.io/badge/Supabase-Backend%20%26%20Realtime-3ECF8E?logo=supabase&logoColor=white" alt="Supabase"/>
-  <img src="https://img.shields.io/badge/Platforms-Web%20|%20Windows%20|%20Android%20|%20iOS-10B981" alt="Platforms"/>
+  <img src="https://img.shields.io/badge/Platforms-Web%20|%20Windows%20|%20Linux%20|%20Android%20|%20iOS-10B981" alt="Platforms"/>
+  <img src="https://img.shields.io/badge/Snap%20Store-Supported-E95420?logo=snapcraft&logoColor=white" alt="Snapcraft"/>
+  <img src="https://img.shields.io/badge/Flathub-Ready-4A90E2?logo=flathub&logoColor=white" alt="Flathub"/>
   <img src="https://img.shields.io/badge/License-MIT-F59E0B" alt="License"/>
 </p>
 
@@ -82,6 +84,9 @@ flutter build apk --release
 
 # بناء نسخة ويندوز (Windows Desktop Executable)
 flutter build windows --release
+
+# بناء نسخة لينكس (Linux Desktop Executable)
+flutter build linux --release
 ```
 
 ---
@@ -109,6 +114,18 @@ flutter build windows --release
 
 ### 4. متجر F-Droid و IzzyOnDroid (لمستخدمي أندرويد مفتوح المصدر)
 - [IzzyOnDroid](https://apt.izzysoft.de/fdroid/) و [F-Droid](https://f-droid.org/) هما متجران مجانيان بالكامل لمستخدمي أندرويد لتطبيقات المصدر المفتوح، حيث يمكنك إضافة تطبيقك ليقوم المستخدمون بتحميله وتحديثه تلقائياً.
+
+### 5. متاجر لينكس (Snap Store & Flathub & AppImage & .deb)
+- **متجر أوبونتو (Canonical Snap Store):** التطبيق مجهز بالكامل بملف `snap/snapcraft.yaml`. يمكن تثبيته وتحديثه تلقائياً لجميع توزيعات لينكس:
+  ```bash
+  sudo snap install focus-oasis
+  ```
+- **متجر فلات هاب العالمي (Flathub / Flatpak):** يدعم التوزيع لجميع أنظمة لينكس مثل Fedora و Steam Deck و Arch و Linux Mint:
+  ```bash
+  flatpak install flathub io.github.ashrafcode519.focus_oasis
+  ```
+- **حزم التوزيع المباشر (.deb & AppImage):** يتم بناؤها وتوليدها تلقائياً مع كل إصدار جديد عبر GitHub Actions لتنزيلها بنقرة واحدة وتشغيلها على أي توزيعة لينكس فوراً.
+- تفاصيل كاملة في [دليل النشر على متاجر لينكس](LINUX_STORES_GUIDE.md).
 
 ---
 

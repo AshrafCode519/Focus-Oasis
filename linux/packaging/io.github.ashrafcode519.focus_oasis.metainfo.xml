@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.ashrafcode519.focus_oasis</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Focus Oasis</name>
+  <name xml:lang="ar">واحة التركيز</name>
+  <summary>Smart Pomodoro timer with gamified tree planting and cloud sync</summary>
+  <summary xml:lang="ar">تطبيق بومودورو ذكي مع تلعيب زراعة الأشجار ومزامنة سحابية</summary>
+
+  <description>
+    <p>
+      Focus Oasis is a modern, beautifully crafted productivity and time-management application built with Flutter.
+      It combines the proven Pomodoro Technique with virtual forest gamification to help you conquer procrastination,
+      cultivate deep work habits, and build a flourishing oasis of accomplishments.
+    </p>
+    <p xml:lang="ar">
+      واحة التركيز (Focus Oasis) هو تطبيق إنتاجية وإدارة وقت فائق الأناقة مبني بتقنية Flutter. يدمج تقنية بومودورو المثبتة علمياً مع نظام تلعيب زراعة الغابات لمساعدتك في التغلب على التسويف، وبناء عادات تركيز عميق، وتنمية واحة مزدهرة من الإنجازات.
+    </p>
+    <ul>
+      <li>Smart customizable Pomodoro cycles (Focus, Short Break, Long Break)</li>
+      <li>Virtual Forest Oasis: Plant seeds that grow into mature trees with every minute of focus</li>
+      <li>Tree Nursery Store: Unlock unique tree species with earned seeds</li>
+      <li>Live Community &amp; Leaderboards: Connect with peers and share cheers in real-time</li>
+      <li>Ambient Sound Generator: 528Hz Zen Chimes, rain, waves, and warm brown noise</li>
+      <li>Guided 4-7-8 breathing exercises for mindful breaks</li>
+      <li>Cross-platform real-time sync with Supabase</li>
+      <li>Full Arabic (RTL) and Multilingual support (English, French, Spanish)</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.ashrafcode519.focus_oasis.desktop</launchable>
+
+  <url type="homepage">https://github.com/AshrafCode519/Focus-Oasis</url>
+  <url type="bugtracker">https://github.com/AshrafCode519/Focus-Oasis/issues</url>
+  <url type="vcs-browser">https://github.com/AshrafCode519/Focus-Oasis</url>
+
+  <developer_name>AshrafCode519</developer_name>
+
+  <provides>
+    <binary>focus_oasis</binary>
+  </provides>
+
+  <categories>
+    <category>Utility</category>
+    <category>Office</category>
+    <category>Clock</category>
+  </categories>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="1.0.0" date="2026-10-23">
+      <description>
+        <p>Initial official release of Focus Oasis for Linux desktop.</p>
+      </description>
+    </release>
+  </releases>
+</component>

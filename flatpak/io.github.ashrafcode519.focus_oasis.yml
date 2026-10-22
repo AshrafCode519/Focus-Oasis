@@ -1,0 +1,39 @@
+app-id: io.github.ashrafcode519.focus_oasis
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: focus_oasis
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --socket=pulseaudio
+  - --share=network
+
+modules:
+  - name: focus_oasis
+    buildsystem: simple
+    build-commands:
+      # Install application bundle
+      - install -d /app/bin /app/lib /app/share/focus_oasis
+      - cp -r bundle/* /app/share/focus_oasis/
+      - ln -sf /app/share/focus_oasis/focus_oasis /app/bin/focus_oasis
+
+      # Install Desktop integration & Metainfo
+      - install -Dm644 io.github.ashrafcode519.focus_oasis.desktop /app/share/applications/io.github.ashrafcode519.focus_oasis.desktop
+      - install -Dm644 io.github.ashrafcode519.focus_oasis.metainfo.xml /app/share/metainfo/io.github.ashrafcode519.focus_oasis.metainfo.xml
+      - install -Dm644 io.github.ashrafcode519.focus_oasis.png /app/share/icons/hicolor/512x512/apps/io.github.ashrafcode519.focus_oasis.png
+
+    sources:
+      # Points to the prebuilt Linux release bundle tarball from GitHub Releases
+      - type: archive
+        url: https://github.com/AshrafCode519/Focus-Oasis/releases/download/v1.0.0/focus-oasis-linux-x64.tar.gz
+        sha256: 0000000000000000000000000000000000000000000000000000000000000000
+      - type: file
+        path: linux/packaging/io.github.ashrafcode519.focus_oasis.desktop
+      - type: file
+        path: linux/packaging/io.github.ashrafcode519.focus_oasis.metainfo.xml
+      - type: file
+        path: linux/packaging/io.github.ashrafcode519.focus_oasis.png
