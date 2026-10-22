@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="واحة التركيز (Focus Oasis) - تطبيق إدارة الوقت والإنتاجية مع محرك بومودورو ونظام تلعيب الغابة الافتراضية">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Focus Oasis">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>واحة التركيز • Focus Oasis</title>
+  <link rel="manifest" href="manifest.json">
+  <!-- Optional Google Fonts for ultra-crisp typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: #08120F;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Tajawal', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Fullscreen Oasis Splash Container */
+    #oasis-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: radial-gradient(circle at 50% 38%, #112820 0%, #081410 55%, #050B09 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    #oasis-splash.fade-out {
+      opacity: 0;
+      transform: scale(1.03);
+      pointer-events: none;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.08) 50%, transparent 70%);
+      filter: blur(50px);
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+      100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    }
+
+    /* Subtle background dot pattern */
+    .bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.1) 1.2px, transparent 1.2px);
+      background-size: 32px 32px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Main Content Wrapper */
+    .splash-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      max-width: 440px;
+      width: 90%;
+    }
+
+    /* Logo Halo & Container */
+    .logo-container {
+      position: relative;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pulse-ring-outer {
+      position: absolute;
+      width: 154px;
+      height: 154px;
+      border-radius: 44px;
+      border: 1px dashed rgba(245, 158, 11, 0.35);
+      animation: rotateRing 24s linear infinite;
+    }
+
+    .pulse-ring-inner {
+      position: absolute;
+      width: 136px;
+      height: 136px;
+      border-radius: 38px;
+      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.3);
+      animation: ringBreath 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes ringBreath {
+      0% { transform: scale(0.96); opacity: 0.5; }
+      100% { transform: scale(1.05); opacity: 0.95; box-shadow: 0 0 45px rgba(16, 185, 129, 0.5); }
+    }
+
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .app-icon {
+      width: 106px;
+      height: 106px;
+      border-radius: 30px;
+      object-fit: cover;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(16, 185, 129, 0.35);
+      position: relative;
+      z-index: 2;
+      animation: floatIcon 3.5s ease-in-out infinite alternate;
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      background: #0D1E18;
+    }
+
+    @keyframes floatIcon {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-7px); }
+    }
+
+    /* Titles */
+    .title-arabic {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #ECFDF5 0%, #6EE7B7 40%, #FBBF24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 10px rgba(16, 185, 129, 0.3));
+    }
+
+    .title-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #34D399;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 320px;
+      font-weight: 500;
+    }
+
+    /* Progress Capsule */
+    .progress-box {
+      width: 100%;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .progress-fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 45%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #10B981 0%, #34D399 40%, #F59E0B 75%, #10B981 100%);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.9);
+      animation: progressSlide 1.7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    @keyframes progressSlide {
+      0% { left: -50%; width: 35%; }
+      50% { width: 55%; }
+      100% { left: 110%; width: 35%; }
+    }
+
+    /* Status Message Ticker */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      font-size: 13px;
+      color: #A7F3D0;
+      font-weight: 500;
+      min-height: 36px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      animation: dotPulse 1.2s infinite alternate;
+      flex-shrink: 0;
+    }
+
+    @keyframes dotPulse {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .status-text {
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      white-space: nowrap;
+    }
+
+    /* Floating Leaves / Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #FBBF24;
+      box-shadow: 0 0 8px #FBBF24;
+      animation: sparkleAnim 3s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    .sparkle-1 { top: 28%; left: 30%; animation-delay: 0.3s; }
+    .sparkle-2 { top: 32%; right: 28%; animation-delay: 1.2s; }
+    .sparkle-3 { top: 62%; left: 34%; animation-delay: 2.1s; }
+    .sparkle-4 { top: 58%; right: 32%; animation-delay: 1.8s; }
+
+    @keyframes sparkleAnim {
+      0%, 100% { transform: scale(0.4); opacity: 0; }
+      50% { transform: scale(1.4); opacity: 0.85; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ================================================================= -->
+  <!-- FOCUS OASIS LUXURY WEB SPLASH LOADER                              -->
+  <!-- ================================================================= -->
+  <div id="oasis-splash" role="status" aria-live="polite">
+    <div class="ambient-glow"></div>
+    <div class="bg-pattern"></div>
+
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+    <div class="sparkle sparkle-4"></div>
+
+    <div class="splash-content">
+      <div class="logo-container">
+        <div class="pulse-ring-outer"></div>
+        <div class="pulse-ring-inner"></div>
+        <img src="icons/Icon-192.png" alt="Focus Oasis" class="app-icon" onerror="this.style.display='none'"/>
+      </div>
+
+      <h1 class="title-arabic">واحة التركيز</h1>
+      <div class="title-badge">FOCUS OASIS • POMODORO & FOREST</div>
+      <p class="tagline">مساحتك الهادئة للإنتاجية العالية والتركيز العميق</p>
+
+      <div class="progress-box">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="oasis-status-text" class="status-text">🌱 جاري زراعة بيئة التركيز الخاصة بك...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Rotating inspirational phrases
+      var tips = [
+        "🌱 جاري تهيئة واحتك الخضراء...",
+        "⏳ نجهز لك بيئة تركيز خالية من المشتتات...",
+        "🌳 كل جلسة تركيز هي شجرة جديدة في غابتك...",
+        "✨ دقائق تركيزك اليوم تصنع مستقبلك...",
+        "🎧 أصوات الطبيعة والهدوء في انتظارك...",
+        "🎯 التحديات ولوحة الصدارة تتجدد يومياً..."
+      ];
+      var tipIndex = 0;
+      var statusEl = document.getElementById('oasis-status-text');
+
+      var tipInterval = setInterval(function () {
+        if (!statusEl) return;
+        tipIndex = (tipIndex + 1) % tips.length;
+        statusEl.style.opacity = '0';
+        statusEl.style.transform = 'translateY(4px)';
+        setTimeout(function () {
+          statusEl.textContent = tips[tipIndex];
+          statusEl.style.opacity = '1';
+          statusEl.style.transform = 'translateY(0)';
+        }, 260);
+      }, 2300);
+
+      // Splash Dismissal with Smooth Dissolve
+      var splashDismissed = false;
+      function dismissSplash() {
+        if (splashDismissed) return;
+        splashDismissed = true;
+        clearInterval(tipInterval);
+
+        var splash = document.getElementById('oasis-splash');
+        if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(function () {
+            if (splash.parentNode) {
+              splash.parentNode.removeChild(splash);
+            }
+          }, 650);
+        }
+      }
+
+      // 1. Listen for Flutter first frame event
+      window.addEventListener('flutter-first-frame', function () {
+        dismissSplash();
+      });
+
+      // 2. Observe DOM for Flutter canvas view injection
+      var observer = new MutationObserver(function (mutations, obs) {
+        var flutterElement = document.querySelector('flutter-view') || document.querySelector('flt-glass-pane');
+        if (flutterElement) {
+          setTimeout(dismissSplash, 120);
+          obs.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      // 3. Absolute safety timeout (8s fallback) so loader never freezes UI
+      setTimeout(dismissSplash, 8000);
+    })();
+  </script>
+
+  <!-- Flutter bootstrap engine script -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
