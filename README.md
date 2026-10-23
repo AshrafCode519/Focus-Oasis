@@ -16,6 +16,7 @@
   <img src="https://img.shields.io/badge/Platforms-Web%20|%20Windows%20|%20Linux%20|%20Android%20|%20iOS-10B981" alt="Platforms"/>
   <img src="https://img.shields.io/badge/Snap%20Store-Supported-E95420?logo=snapcraft&logoColor=white" alt="Snapcraft"/>
   <img src="https://img.shields.io/badge/Flathub-Ready-4A90E2?logo=flathub&logoColor=white" alt="Flathub"/>
+  <img src="https://img.shields.io/badge/Microsoft%20Store-MSIX%20Ready-0078D4?logo=windows&logoColor=white" alt="Microsoft Store"/>
   <img src="https://img.shields.io/badge/License-MIT-F59E0B" alt="License"/>
 </p>
 
@@ -126,6 +127,11 @@ flutter build linux --release
   ```
 - **حزم التوزيع المباشر (.deb & AppImage):** يتم بناؤها وتوليدها تلقائياً مع كل إصدار جديد عبر GitHub Actions لتنزيلها بنقرة واحدة وتشغيلها على أي توزيعة لينكس فوراً.
 - تفاصيل كاملة في [دليل النشر على متاجر لينكس](LINUX_STORES_GUIDE.md).
+
+### 6. متجر مايكروسوفت لنظام ويندوز (Microsoft Store & MSIX)
+- **حزم MSIX الرسمية:** تم إعداد التطبيق لإنشاء حزم `.msix` مخصصة للرفع المباشر إلى Microsoft Partner Center، بالإضافة إلى حزم تثبيت مستقلة ونسخ محمولة:
+- يتم بناؤها آلياً عبر ورك فلو GitHub Actions: [`.github/workflows/windows-release.yml`](.github/workflows/windows-release.yml).
+- تفاصيل كاملة في [دليل النشر على متجر مايكروسوفت](WINDOWS_STORE_GUIDE.md).
 
 ---
 
