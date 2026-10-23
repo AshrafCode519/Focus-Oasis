@@ -45,8 +45,9 @@ mkdir -p "${DEB_DIR}/usr/share/icons/hicolor/512x512/apps"
 # Copy binary bundle
 cp -r "${BUNDLE_DIR}/"* "${DEB_DIR}/usr/lib/${APP_NAME}/"
 
-# Launcher symlink
+# Launcher symlinks (supports both focus-oasis and focus_oasis commands)
 ln -s "/usr/lib/${APP_NAME}/focus_oasis" "${DEB_DIR}/usr/bin/${APP_NAME}"
+ln -s "/usr/lib/${APP_NAME}/focus_oasis" "${DEB_DIR}/usr/bin/focus_oasis"
 
 # Desktop & metadata
 cp linux/packaging/io.github.ashrafcode519.focus_oasis.desktop "${DEB_DIR}/usr/share/applications/"
