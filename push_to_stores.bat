@@ -1,33 +1,39 @@
 @echo off
-chcp 65001 >nul
 title Focus Oasis - Push to GitHub and Trigger Linux Release
 color 0A
 echo ================================================================
-echo   🌿 واحة التركيز - رفع التحديثات وبناء نسخ ومتاجر لينكس
+echo   Focus Oasis - Push to GitHub and Trigger Linux Release
 echo ================================================================
 echo.
-echo [1/2] جارٍ رفع الفرع الرئيسي (main)...
+echo [1/2] Pushing main branch...
 git push -u origin main
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo ❌ فشل الرفع. يرجى تسجيل الدخول إلى GitHub عند ظهور النافذة المنبثقة.
+    echo [ERROR] Push failed. Please authenticate with GitHub when prompted.
     echo.
     pause
     exit /b %ERRORLEVEL%
 )
 
 echo.
-echo [2/2] جارٍ رفع علامة الإصدار (v1.0.0)...
+echo [2/2] Pushing release tag v1.0.0...
 git push origin v1.0.0
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo [ERROR] Failed to push tag v1.0.0.
+    echo.
+    pause
+    exit /b %ERRORLEVEL%
+)
 
 echo.
 echo ================================================================
-echo   🎉 تم الرفع بنجاح!
-echo   بدأ GitHub Actions الآن بناء كافة نسخ ومتاجر لينكس آلياً:
-echo   1. متجر أوبونتو (Canonical Snap Store)
-echo   2. متجر فلات هاب العالمي (Flathub)
-echo   3. حزم دبيان وأوبونتو (.deb)
-echo   4. حزم AppImage المحمولة
+echo   SUCCESS! Pushed to GitHub.
+echo   GitHub Actions is now automatically building:
+echo   1. Ubuntu Snap Store (Canonical)
+echo   2. Flathub Flatpak Manifest
+echo   3. Debian Package (.deb)
+echo   4. Portable AppImage
 echo ================================================================
 echo.
 pause
