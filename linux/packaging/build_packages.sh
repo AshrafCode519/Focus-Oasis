@@ -97,7 +97,7 @@ if command -v appimagetool &> /dev/null || [ -f "./appimagetool" ]; then
         TOOL="./appimagetool"
     fi
 
-    ARCH=x86_64 $TOOL "$APPDIR" "${OUTPUT_DIR}/FocusOasis-${VERSION}-x86_64.AppImage"
+    ARCH=x86_64 $TOOL --appimage-extract-and-run "$APPDIR" "${OUTPUT_DIR}/FocusOasis-${VERSION}-x86_64.AppImage"
     echo "Created ${OUTPUT_DIR}/FocusOasis-${VERSION}-x86_64.AppImage"
 else
     echo "==> Note: appimagetool not found locally, skipping AppImage step (handled in CI)."

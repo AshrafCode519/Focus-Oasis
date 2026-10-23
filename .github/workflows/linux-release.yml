@@ -12,7 +12,7 @@ permissions:
 jobs:
   build-linux-packages:
     name: Build Linux (.deb, .AppImage, .tar.gz)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -21,18 +21,7 @@ jobs:
       - name: Install Linux build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            clang \
-            cmake \
-            ninja-build \
-            pkg-config \
-            libgtk-3-dev \
-            liblzma-dev \
-            libgstreamer1.0-dev \
-            libgstreamer-plugins-base1.0-dev \
-            libfuse2 \
-            wget \
-            file
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -94,7 +83,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Snap package
-        uses: snapcore/action-build@v3
+        uses: snapcore/action-build@v1
         id: snapcraft
 
       - name: Upload Snap artifact
