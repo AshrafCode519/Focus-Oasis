@@ -29,8 +29,8 @@ modules:
     sources:
       # Points to the prebuilt Linux release bundle tarball from GitHub Releases
       - type: archive
-        url: https://github.com/AshrafCode519/Focus-Oasis/releases/download/v1.0.0/focus-oasis-linux-x64.tar.gz
-        sha256: 0000000000000000000000000000000000000000000000000000000000000000
+        url: https://github.com/AshrafCode519/Focus-Oasis/releases/download/v1.0.0/focus-oasis-1.0.0-linux-x64.tar.gz
+        sha256: cc3a03c3ca09c4dc689a1668cfa4df490b6500524cc729b41f7cd7bbcb17b764
       - type: file
         path: linux/packaging/io.github.ashrafcode519.focus_oasis.desktop
       - type: file
