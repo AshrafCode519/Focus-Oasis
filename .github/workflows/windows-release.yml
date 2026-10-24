@@ -45,8 +45,8 @@ jobs:
       - name: Compress Portable Windows Zip
         shell: pwsh
         run: |
-          mkdir -p dist
-          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath dist/FocusOasis-Windows-Portable-x64.zip
+          if (!(Test-Path "dist")) { New-Item -ItemType Directory -Force -Path "dist" }
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath dist/FocusOasis-Windows-Portable-x64.zip -Force
 
       - name: Upload Windows Dist Artifacts
         uses: actions/upload-artifact@v4
